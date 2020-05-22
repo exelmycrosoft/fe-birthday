@@ -1,37 +1,51 @@
-<div [hidden]=" submitted">
-  <div class="container">
+<div class="container col-md-4 col-md-offset-4" >
+  <div [hidden]=" submitted" >
     <h1>Birthday Form</h1>
     <form (ngSubmit)="onSubmit()" #birthdayForm="ngForm">
-      <div class="form-group">
+      
+      <div class="form-group mb-2 ">
         <label for="fullName">FullName</label>
         <input type="text" class="form-control" id="fullName" required [(ngModel)]="user.fullName" 
-          name="fullName" #fullName="ngModel">
-        <div [hidden]="fullName.valid || fullName.pristine" class="alert alert-danger">FullName is required</div>
+          name="fullName" #fullName="ngModel" class="form-control mb-4"> 
+        <div [hidden]="fullName.valid || fullName.pristine" class="alert alert-danger mb-2">FullName is required</div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group mb-2">
         <label for="birthday">Birthday</label>
-        <input type="text" class="form-control" id="birthday" required [(ngModel)]="user.birthday" 
-          name="birthday" #birthday="ngModel">
+        <input type="date" class="form-control" id="birthday" required [(ngModel)]="user.birthday" 
+          name="birthday" #birthday="ngModel" class="form-control mb-2">
           <div [hidden]="birthday.valid || birthday.pristine" class="alert alert-danger">Birthday is required</div>
       </div>
 
       <button type="submit" class="btn btn-success" [disabled]="!birthdayForm.form.valid">Submit</button>
 
     </form>
+    
   </div>
-</div>
 
-<div [hidden]="!submitted">
-  <h2>You submitted the following:</h2>
-  <div class="row">
-    <div class="col-xs-3">FullName</div>
-    <div class="col-xs-9">{{ user.fullName }}</div>
+  <div [hidden]="!submitted">
+    <h2>Your information:</h2>
+    <div class="form-group mb-2 ">
+      <label>FirstName</label>
+      <label class="form-control mb-4">{{ birthdayResponse.firstName }}</label>
+    </div>
+    <div class="form-group mb-2 ">
+      <label>LastName</label>
+      <label class="form-control mb-4">{{ birthdayResponse.lastName }}</label>
+    </div>
+    <div class="form-group mb-2">
+      <label>Days to your birthday</label>
+      <label class="form-control mb-4">{{ birthdayResponse.daysToYourBirthDay}}</label>
+    </div>
+    <div class="form-group mb-2">
+      <label>Age</label>
+      <label class="form-control mb-4">{{ birthdayResponse.age}}</label>
+    </div>
+    <div ng-hide="birthdayResponse.poemText == ''" class="form-group mb-2">
+      <label>Poem</label>
+      <textarea class="form-control mb-4" rows="10">{{ birthdayResponse.poemText}}</textarea>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false; birthdayForm.reset();">Back</button>
   </div>
-  <div class="row">
-    <div class="col-xs-3">Birthday</div>
-    <div class="col-xs-9">{{ user.birthday }}</div>
-  </div>
-  <br>
-  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
 </div>

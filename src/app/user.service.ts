@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user';
 import { Observable } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 @Injectable()
 export class UserService {
@@ -19,11 +20,14 @@ export class UserService {
     })
   }  
 
-  public getPoem(user:User): Observable<User>{
+  public getPoem(user:User): Observable<any>{
     console.log(user);
-    console.log(this.birthDayGreetingUrl  + "?fullName=" + user.fullName   + "&birthDay=" + user.birthday);
+    const dateSendingToServer = new DatePipe('en-US').transform(user.birthday, 'dd/MM/yyyy')
+
+    console.log(this.birthDayGreetingUrl  + "?fullName=" + user.fullName   + "&birthDay=" + dateSendingToServer);
+    
     return this.http.get<User>(
-      this.birthDayGreetingUrl  + "?fullName=" + user.fullName  + "&birthDay=" + user.birthday);
+      this.birthDayGreetingUrl  + "?fullName=" + user.fullName  + "&birthDay=" + dateSendingToServer, this.httpOptions)
   }
 
 }
