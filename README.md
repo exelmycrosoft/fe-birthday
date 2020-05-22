@@ -1,29 +1,15 @@
-# README #
+### Ejecución ###
 
-This README would normally document whatever steps are necessary to get your application up and running.
+- Instalar Node.js, el cual puede ser descargado desde: https://nodejs.org/es/download/
 
-### What is this repository for? ###
+- Validar que la api a consumir se este ejecutando
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+- Ejecutar consola de comandos de Wwindows y escribir los siguientes comandos:
 
-### How do I get set up? ###
+- npm install
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+- npm start
 
-### Contribution guidelines ###
+- Asegurar de tener disponibilidad en el puerto 4200. 
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+- Ingresar en la siguiente ruta para verificar que la instalación haya estado completa: http://localhost:4200/
