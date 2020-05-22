@@ -22,8 +22,8 @@ export class UserService {
 
   public getPoem(user:User): Observable<any>{
     console.log(user);
-    const dateSendingToServer = new DatePipe('en-US').transform(user.birthday, 'dd/MM/yyyy')
-
+    const dateSendingToServer = new DatePipe('en-ES').transform(user.birthday, 'dd/MM/yyyy')
+    
     console.log(this.birthDayGreetingUrl  + "?fullName=" + user.fullName   + "&birthDay=" + dateSendingToServer);
     
     return this.http.get<User>(
